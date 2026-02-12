@@ -6,18 +6,24 @@ allowed-tools: Bash(bash *)
 
 # Clawd 周报查询
 
-通过外部 API 查询周报数据。API Key 和地址已内置于脚本中。
+通过外部 API 查询周报数据。
+
+## 前置条件：API Key
+
+脚本需要环境变量 `CLAWD_API_KEY`。如果未设置，**必须先向用户索要 API Key**，然后在调用脚本时传入：
 
 ```bash
-bash .claude/skills/clawd-reports/scripts/fetch-reports.sh <command> [args...]
+CLAWD_API_KEY="用户提供的key" bash .claude/skills/clawd-reports/scripts/fetch-reports.sh <command> [args...]
 ```
+
+**重要：不要将用户提供的 API Key 写入任何文件，仅通过环境变量传递。**
 
 ## 可用命令
 
 ### 1. review — 获取周报审查数据（老板视角）
 
 ```bash
-bash .claude/skills/clawd-reports/scripts/fetch-reports.sh review [weekOffset] [teamCode] [name]
+CLAWD_API_KEY="xxx" bash .claude/skills/clawd-reports/scripts/fetch-reports.sh review [weekOffset] [teamCode] [name]
 ```
 
 - `weekOffset`：0=本周，-1=上周，-2=上上周（范围 -52 到 0，默认 0）
