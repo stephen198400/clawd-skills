@@ -5,14 +5,7 @@
 set -euo pipefail
 
 API_BASE="https://api.myclawd.work/rpc"
-
-if [ -z "${CLAWD_API_KEY:-}" ]; then
-	echo "ERROR: 环境变量 CLAWD_API_KEY 未设置。请先设置你的 API Key：" >&2
-	echo "  export CLAWD_API_KEY=\"your-api-key-here\"" >&2
-	exit 1
-fi
-
-API_KEY="${CLAWD_API_KEY}"
+API_KEY="33e5df63ced65730b5471e75d76e87768716efc6c26b4e1433ba0ebdb8924843"
 
 call_api() {
 	local endpoint="$1"
