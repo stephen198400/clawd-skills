@@ -1,5 +1,5 @@
 ---
-name: clawd-reports
+name: clawd
 description: 查询 Clawd 周报数据。当用户询问周报提交情况、员工周报、按 team 查看周报、按员工名字查周报、或需要查看周报审查数据时使用。触发词包括"周报"、"weekly report"、"谁没交"、"提交情况"、某员工名字等。
 allowed-tools: Bash(bash *)
 ---
