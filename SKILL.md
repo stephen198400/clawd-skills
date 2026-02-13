@@ -1,5 +1,5 @@
 ---
-name: clawd
+name: clawd-reports
 description: 查询 Clawd 周报数据。当用户询问周报提交情况、员工周报、按 team 查看周报、按员工名字查周报、或需要查看周报审查数据时使用。触发词包括"周报"、"weekly report"、"谁没交"、"提交情况"、某员工名字等。
 allowed-tools: Bash(bash *)
 ---
@@ -61,7 +61,9 @@ bash .claude/skills/clawd-reports/scripts/fetch-reports.sh detail <reportId>
 
 ## 状态说明
 
-- `completed`：AI 分析完成
-- `processing`：正在处理中
-- `missing`：未提交
-- `needs_review`：AI 分析失败，需人工审查
+判断周报是否完成/提交，**只看 `submissionStatus`**：
+
+- **`submitted`**：已提交（即"交了"）
+- **`missing`**：未提交（即"没交"，包括草稿未提交的情况）
+
+用户问"谁交了/谁没交周报"时，按此二分判断，忽略 AI 分析等其他状态。
